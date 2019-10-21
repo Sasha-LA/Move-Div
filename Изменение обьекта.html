@@ -1,0 +1,210 @@
+<!Document HTML>
+<html> 
+<head>
+    <title>Перемещение текста</title> 
+    <style>
+    #block {
+        position: absolute;
+        background-color: black;
+        height: 200px;
+        width: 200px;
+        top: 10px;
+        left: 10px;
+
+        
+    }
+    #small{
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: red;
+        top: 200px;
+        left: 200px;
+    }
+    #move{
+        position: absolute;
+        background-color: rgb(135, 135, 211);
+        height: 20px;
+        width: 200px;
+        top: 10px;
+        left: 10px;
+
+    
+    }
+    </style>
+</head>
+<body>
+
+<div id="block">  
+    
+
+</div>
+<div id="small">
+
+</div>
+<div id="move">
+
+</div>
+
+
+
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+
+
+$("#small").mouseover(function(){
+    $("#small").mousedown(function(){
+
+        x = event.pageX;
+        y = event.pageY;
+        p = true;
+        $("body").mousemove(function(){
+            x0 = $("#small").css("left");
+            y0 = $("#small").css("top");
+            h0 = $("#block").css("height");
+            w0 = $("#block").css("width");
+
+            mw0 = $("#move").css("width");
+           
+            
+            if (p==true){
+                x1 = event.pageX;
+                y1 = event.pageY;
+                x2 = +parseInt(x0) + (x1 - x);
+                y2 = +parseInt(y0) + (y1 - y);
+                h1 = +parseInt(h0) + (y1 - y);
+                w1 = +parseInt(w0) + (x1 - x);
+
+                mw1 = +parseInt(mw0) + (x1 - x);
+
+                x = x1;
+                y = y1;
+                $("#small").css("left", x2 + "px");
+                $("#small").css("top", y2 + "px");           
+                $("#block").css("height", h1 + "px");
+                $("#block").css("width", w1 + "px");
+
+                $("#move").css("width", mw1 + "px");
+                $("#small").mouseup(function(){
+
+                    p = false;
+                    
+                    
+                    
+                })
+            }
+
+        })
+    })
+});
+
+
+$("#move").mouseover(function(){
+    $("#move").mousedown(function(){
+
+        _x = event.pageX;
+        _y = event.pageY;
+        _p = true;
+        $("body").mousemove(function(){
+            _x0 = $("#small").css("left");
+            _y0 = $("#small").css("top");
+            _h0 = $("#block").css("left");
+            _w0 = $("#block").css("top");
+            _mx0 = $("#move").css("left");
+            _my0 = $("#move").css("top");
+            
+            
+
+
+
+            if (_p==true){
+                _x1 = event.pageX;
+                _y1 = event.pageY;
+                _x2 = +parseInt(_x0) + (_x1 - _x);
+                _y2 = +parseInt(_y0) + (_y1 - _y);
+                _h1 = +parseInt(_h0) + (_x1 - _x);
+                _w1 = +parseInt(_w0) + (_y1 - _y);
+                _mx1 = +parseInt(_mx0) + (_x1 - _x);
+                _my1 = +parseInt(_my0) + (_y1 - _y);
+
+                _x = _x1;
+                _y = _y1;
+                $("#small").css("left", _x2 + "px");
+                $("#small").css("top", _y2 + "px");           
+                $("#block").css("left", _h1 + "px");
+                $("#block").css("top", _w1 + "px");
+                $("#move").css("left", _mx1 + "px");
+                $("#move").css("top", _my1 + "px");
+
+                
+
+                $("#move").mouseup(function(){
+
+                    _p = false;
+
+                   
+                })
+            }
+
+        })
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+/*$("#centr").mouseover(function(){
+    
+    $("#centr").mousedown(function(ev){
+        x = event.pageX;
+        y = event.pageY;
+        
+        
+        p = true;
+        $("body").mousemove(function move(){
+            x0 = $("#centr").css("left");
+            y0 = $("#centr").css("top");
+           
+
+            if (p==true){
+            x1 = event.pageX;
+            y1 = event.pageY;                    
+            x3 = +parseInt(x0) + (x1 - x);
+            y3 = +parseInt(y0) + (y1 - y);
+            x = x1;
+            y = y1;
+
+            $("#centr").css("left", x3 + "px");
+            $("#centr").css("top", y3 + "px");
+
+            $("#centr").mouseup(function(){
+
+                p = false;
+               
+
+            })}
+
+        }
+
+        ) 
+    }
+    )
+});*/
+
+
+
+</script>
+</body>    
+
+
+
+
+</html>
